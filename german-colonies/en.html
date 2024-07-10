@@ -149,7 +149,7 @@
         }
 
         // Load GeoJSON data for background countries and render
-        d3.json("https://raw.githubusercontent.com/facqberlin/colonies/main/current_borders.geojson").then(function(data) {
+        d3.json("current_borders.geojson").then(function(data) {
             backgroundPath = d3.geoPath().projection(initialProjection);
 
             var thinStroke = 0.5;
@@ -173,7 +173,7 @@
             });
 
             // Load GeoJSON data for territories and render
-        d3.json("https://raw.githubusercontent.com/facqberlin/colonies/main/test_colonies.geojson").then(function(data) {
+        d3.json("test_colonies.geojson").then(function(data) {
             
             guessPath = d3.geoPath().projection(initialProjection); // Use the same projection as the background
 
