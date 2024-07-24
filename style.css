@@ -147,7 +147,7 @@ img {
 
 .game{
     text-align: center;
-    font-size: 1em;
+    font-size: 0.85em;
     height: 100px;
     padding : 20px;
     display: flex;
@@ -269,7 +269,7 @@ path.incorrect {
 
 .tooltip {
     font-family: "Mono";
-    font-size: 0.8em;
+    font-size: 0.85em;
     position: absolute;
     padding: 10px;
     background-color: white;
@@ -278,6 +278,19 @@ path.incorrect {
     display: block;
     opacity: none;
     max-width: 150px;
+}
+
+#proj_info{
+    font-family: "Mono";
+    font-size: 0.85em;
+    position: absolute;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid black;
+    pointer-events: none;
+    display: block;
+    opacity: none;
+    width: 300px;
 }
 
 h1 {
@@ -343,8 +356,7 @@ a {
     padding-bottom: 2px;
 }
 
-#lang a:hover {
-    
+#lang a:hover, #lang a.cur {
     padding-bottom: 0px;
     border-bottom: 2px solid #C675FF; 
 }
@@ -357,7 +369,7 @@ hr {
 
 .projection{
     font-family: 'Mono';
-    font-size: 0.8em;
+    font-size: 0.85em;
     text-align: right;
 }
 
@@ -396,7 +408,7 @@ select, select option {
     width: 90%;
     max-width: 300px;
     font-family: 'Mono';
-    font-size: 0.9em;
+    font-size: 0.85em;
     border : 3px solid #FF0299;
     border-radius: 3px;
     font-weight: bold;
@@ -431,7 +443,7 @@ select, select option {
 
 .choice, .button_back{
     font-family: 'Mono';
-    font-size: 0.8em;
+    font-size: 0.85em;
     /* display: inline-block; */
     flex : 1;
     text-align: center;
@@ -517,7 +529,7 @@ a.button_back {
 
 .revealChoice, .revealCorrectLetter{
     font-family: 'Mono';
-    font-size: 0.8em;
+    font-size: 0.85em;
 }
 
 .revealCorrectLetter b {
@@ -624,7 +636,7 @@ a.button_back {
         margin: 20px 0px;
     }
     .game {
-        font-size: 0.8em;
+        font-size: 0.85em;
         height: auto;
         margin: 20px 0px;
     }
@@ -658,5 +670,7 @@ a.button_back {
     #scoreText{
         margin: 20px;
     }
-
+    #proj_info{
+        width: 75vw;
+    }
 }

@@ -10,7 +10,7 @@
 <body>
     <div class = "page" id = "wide-page">
         <div class="container">
-            <p id = "lang"><a href="en.html">EN</a> | <a href = "de.html">DE</a></p>
+            <p id = "lang"><a href="en.html">EN</a> | <a class = "cur" href = "de.html">DE</a></p>
             <h1 class = "en">Weißt du, welche Orte Deutschland kolonisiert hat?</h1>
             <!-- <div id="category">How to play</div> -->
             <p>Während die deutsche Geschichtsschreibung die Bedeutung und Auswirkungen des deutschen Kolonialismus herunterspielt, reichen die ersten deutschen Kolonisierungsprojekte bereits ins 17. Jahrhundert zurück. Doch erst nach der Gründung des Deutschen Kaiserreichs 1871 und der Berliner Konferenz 1884-1885 entstand ein einheitliches Kolonialreich, das sein brutalstes Gesicht während des Völkermords an den Herero und Nama zeigte. Mehr als 80 % der Herero-Bevölkerung und 50 % der Nama-Bevölkerung Namibias wurden zwischen 1904 und 1908 umgebracht.</p>
@@ -41,6 +41,7 @@
             <svg id="map"></svg>
         </div>
     <div class="tooltip" id="tooltip" style = "opacity: 0"></div>
+    <div id="proj_info" style = "opacity: 0"></div>
 </div>
     <script>
         var projectionSelect = document.getElementById('projectionSelect');
@@ -48,24 +49,22 @@
         var backgroundPath = null; // Separate path generator for background countries
         var guessPath = null; // Separate path generator for countries to be guessed
         var tooltip = d3.select("#tooltip");
+        var proj_info = d3.select("#proj_info");
 
         // 1000 because layout width is max-width 1000; adjust accordingly
         var shiftRight = Math.min(window.innerWidth, 1000) * 0.5;
-        const isMobile = window.innerWidth > 1000;
-        var shiftDown = isMobile ? window.innerHeight * 0.5 : window.innerWidth * 0.5;
+        const isDesktop = window.innerWidth > 1000;
+        var shiftDown = isDesktop ? window.innerHeight * 0.5 : window.innerWidth * 0.5;
 
         d3.select(".info-icon")
                 .on("mouseover", function (event) {
-                    // Check if the mouse is in the right half of the screen
-                    const isMouseOnRightHalf = event.pageX > window.innerWidth / 2;
-
-                    tooltip.style("opacity", 1)
-                            .style("left", (isMouseOnRightHalf ? event.pageX - 170 : event.pageX + 10) + "px")
-                           .style("top", (event.pageY + 30) + "px")
+                   proj_info.style("opacity", 1)
+                            .style("left", (isDesktop ? event.pageX -310 : 20) + "px")
+                           .style("top", (event.pageY + 20) + "px")
                            .html("Die Standardkarte zeigt die Welt so, wie sie normalerweise dargestellt wird, um die Identifizierung von Ländern/Gebieten zu erleichtern. Diese Darstellung der Welt ist jedoch auch Produkt einer eurozentrischen Weltsicht, und wir wollen dich einladen, dir auch andere Darstellungen der Welt anzusehen!");
             })
                 .on("mouseout", function(){
-                    tooltip.style("opacity", 0);
+                    proj_info.style("opacity", 0);
                 })
 
         // Disable default behavior of mouse wheel for zooming

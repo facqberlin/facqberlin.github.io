@@ -10,7 +10,7 @@
 <body>
     <div class = "page" id = "wide-page">
         <div class="container">
-            <p id = "lang"><a href="en.html">EN</a> | <a href = "de.html">DE</a></p>
+            <p id = "lang"><a class = "cur" href="en.html">EN</a> | <a href = "de.html">DE</a></p>
             <h1 class = "en">Do you know which places Germany colonized?</h1>
             <!-- <div id="category">How to play</div> -->
             <p>Although German historiography minimizes the importance and the impact of German colonialism, the reality is that the first German colonization projects trace back as early as the 17th century. However, it wasn’t after the creation of the German Empire (Deutsches Kaiserreich) in 1871 and the Berlin Conference of 1884-1885 that a unified colonial empire was developed, whose most brutal face was shown during the Herero and Nama genocide. More than 80% of the Herero population and 50% of the Nama population of Namibia were killed between 1904 and 1908.</p>
@@ -52,21 +52,18 @@
 
         // 1000 because layout width is max-width 1000; adjust accordingly
         var shiftRight = Math.min(window.innerWidth, 1000) * 0.5;
-        const isMobile = window.innerWidth > 1000;
-        var shiftDown = isMobile ? window.innerHeight * 0.5 : window.innerWidth * 0.5;
+        const isDesktop = window.innerWidth > 1000;
+        var shiftDown = isDesktop ? window.innerHeight * 0.5 : window.innerWidth * 0.5;
 
         d3.select(".info-icon")
                 .on("mouseover", function (event) {
-                    // Check if the mouse is in the right half of the screen
-                    const isMouseOnRightHalf = event.pageX > window.innerWidth / 2;
-
-                    tooltip.style("opacity", 1)
-                            .style("left", (isMouseOnRightHalf ? event.pageX - 170 : event.pageX + 10) + "px")
-                           .style("top", (event.pageY + 30) + "px")
+                   proj_info.style("opacity", 1)
+                            .style("left", (isDesktop ? event.pageX -310 : 20) + "px")
+                           .style("top", (event.pageY + 20) + "px")
                            .html("The default map shows the world in the way it is usually represented in order to make it easier to identify countries / territories. However, this representation of the world is a product of an eurocentric worldview and we encourage you to have a look at other ways the world can be represented!");
             })
                 .on("mouseout", function(){
-                    tooltip.style("opacity", 0);
+                    proj_info.style("opacity", 0);
                 })
 
         // Disable default behavior of mouse wheel for zooming
